@@ -1,0 +1,63 @@
+type User @model{
+	id: ID! @isUnique
+	name: String
+	password: String
+	ico: Int
+	adress: String
+	contact: Person/String
+	email: String
+	phone: Int
+	report:[Report!] @relation(name: "UserReports")
+	journeys: [Journey] @relation(name: "EmployeeJourneys")
+}
+
+type Category @model{
+	id: ID! @isUnique
+	name: String!
+}
+
+type SPZ @model{
+	code: String! @isUnique
+}
+
+type Report @model{
+	id: ID! @isUnique
+	author: User @relation(name: "UserReports")
+	category: Category!
+	spz: SPZ!
+	time: DateTime!
+	location: Map!
+	description: String!
+}
+
+type Employee @model{
+	id: ID! @isUnique
+	name: String!
+	surname: String!
+	birthdate: DateTime!
+}
+
+type Journey @model{
+	id: ID! @isUnique
+	user: User! @relation(name: "EmployeeJourneys")
+	spz: SPZ!
+	employee: Employee!
+	from: DateTime!
+	to: DateTime!
+}
+
+enum State{
+	PAID
+	UNPAID
+}
+
+type Payment @model{
+	id: ID! @isUnique
+	amount: Float!
+	to: DateTime!
+	state: State! @defaultValue(value: "UNPAID")
+}
+
+type Map @model{
+	
+}
