@@ -1,0 +1,7 @@
+.form-inputs {
+}
+
+.my-form {
+  display: flexbox;
+  flex-flow: column;
+}

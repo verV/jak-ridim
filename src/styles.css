@@ -1,0 +1,19 @@
+.App {
+  font-family: sans-serif;
+}
+
+.my-form {
+  max-width: 400px;
+  display: flex;
+  flex-flow: column;
+}
+
+.my-form label {
+  align-self: flex-start;
+  margin: 10px 0 5px 0;
+}
+
+.my-form input {
+  height: 30px;
+  border: 1 px grey;
+}
